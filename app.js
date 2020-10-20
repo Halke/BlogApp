@@ -51,11 +51,11 @@ app.get("/", function(req, res){
 });
 
 app.get("/about", function(req, res){
-  res.render("about", {aboutContent: aboutContent});
+  res.render("about", {aboutContent: aboutContent.postContent});
 });
 
 app.get("/contact", function(req, res){
-  res.render("contact", {contactContent: contactContent});
+  res.render("contact", {contactContent: contactContent.postContent});
 });
 
 app.get("/compose", function(req, res){
@@ -79,8 +79,6 @@ app.get("/posts/:postName", function(req, res){
   // const requestedTitle = _.lowerCase(req.params.postName);
 
   const requestedPost= req.params.postName;
-
-  console.log(requestedPost);
 
   Blog.findById(requestedPost, (err, foundPost) => {
     if(!err){
